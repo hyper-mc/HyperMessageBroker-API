@@ -17,7 +17,9 @@ public class MsgUpdateTask extends RSTask {
             JSONObject response = (JSONObject) broker.getClient().request("UPDATE", new JSONObject()
                     .put("queue", queue).put("token", broker.getToken()));
             response.getJSONArray("msgs").forEach(o -> {
-                broker.getQueues().get(queue).received(new Message());
+                Message msg = new Message(queue, response.getString("id"), response.getString("creator"), response.get("value"));
+                broker.getQueues().get(queue).received(msg);
+                broker.getClient().request("READ", new JSONObject().put("id", msg.getId()).put("queue", queue).put("token", broker.getToken()));
             });
         }
     }

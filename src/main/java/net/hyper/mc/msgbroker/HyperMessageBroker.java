@@ -3,6 +3,7 @@ package net.hyper.mc.msgbroker;
 import balbucio.responsivescheduler.ResponsiveScheduler;
 import co.gongzh.procbridge.Client;
 import net.hyper.mc.msgbroker.model.MessageReceivedConsumer;
+import net.hyper.mc.msgbroker.task.MsgUpdateTask;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -19,12 +20,11 @@ public class HyperMessageBroker {
         this.scheduler = scheduler;
         this.client = new Client(ip, port);
         this.token = (String) client.request("CONNECT", new JSONObject());
+        scheduler.repeatTask(new MsgUpdateTask(this), 0, 500);
     }
 
     public HyperMessageBroker(String ip, int port){
-        this.scheduler = new ResponsiveScheduler();
-        this.client = new Client(ip, port);
-        this.token = (String) client.request("CONNECT", new JSONObject());
+        this(ip, port, new ResponsiveScheduler());
     }
 
     public String sendMessage(String queue, Object value){
@@ -37,6 +37,12 @@ public class HyperMessageBroker {
 
     public void registerConsumer(String queue, MessageReceivedConsumer c){
         queues.put(queue, c);
+    }
+
+    public void disconnect(){
+        if(token != null) {
+            client.request("DISCONNECT", new JSONObject().put("token", token));
+        }
     }
 
     public Client getClient() {
