@@ -1,4 +1,4 @@
-package net.hyper.mc.msgbroker.model;
+package net.hyper.mc.msgbrokerapi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

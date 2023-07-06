@@ -1,12 +1,11 @@
-package net.hyper.mc.msgbroker;
+package net.hyper.mc.msgbrokerapi;
 
 import balbucio.responsivescheduler.ResponsiveScheduler;
 import co.gongzh.procbridge.Client;
-import net.hyper.mc.msgbroker.model.MessageReceivedConsumer;
-import net.hyper.mc.msgbroker.task.MsgUpdateTask;
+import net.hyper.mc.msgbrokerapi.model.MessageReceivedConsumer;
+import net.hyper.mc.msgbrokerapi.task.MsgUpdateTask;
 import org.json.JSONObject;
 
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class HyperMessageBroker {
@@ -19,7 +18,7 @@ public class HyperMessageBroker {
     public HyperMessageBroker(String ip, int port, ResponsiveScheduler scheduler){
         this.scheduler = scheduler;
         this.client = new Client(ip, port);
-        this.token = (String) client.request("CONNECT", new JSONObject());
+        this.token = (String) client.request("CONNECT", new JSONObject().toString());
         scheduler.repeatTask(new MsgUpdateTask(this), 0, 500);
     }
 
@@ -31,7 +30,7 @@ public class HyperMessageBroker {
         JSONObject response = (JSONObject) client.request("CREATE", new JSONObject()
                 .put("queue", queue)
                 .put("token", token)
-                .put("value", value));
+                .put("value", value).toString());
         return response.getString("id");
     }
 
@@ -39,10 +38,13 @@ public class HyperMessageBroker {
         queues.put(queue, c);
     }
 
-    public void disconnect(){
+    public void shutdown(){
         if(token != null) {
-            client.request("DISCONNECT", new JSONObject().put("token", token));
+            client.request("DISCONNECT", new JSONObject().put("token", token).toString());
         }
+        scheduler.shutdown();
+        client = null;
+        token = null;
     }
 
     public Client getClient() {
