@@ -4,6 +4,7 @@ import balbucio.responsivescheduler.ResponsiveScheduler;
 import co.gongzh.procbridge.Client;
 import net.hyper.mc.msgbrokerapi.model.MessageReceivedConsumer;
 import net.hyper.mc.msgbrokerapi.task.MsgUpdateTask;
+import net.hyper.mc.msgbrokerapi.task.listener.HMBListener;
 import org.json.JSONObject;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +21,7 @@ public class HyperMessageBroker {
         this.client = new Client(ip, port);
         this.token = (String) client.request("CONNECT", new JSONObject().toString());
         scheduler.repeatTask(new MsgUpdateTask(this), 0, 500);
+        scheduler.getEventManager().registerListener(new HMBListener());
     }
 
     public HyperMessageBroker(String ip, int port){
