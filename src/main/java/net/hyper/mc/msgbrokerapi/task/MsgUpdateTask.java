@@ -13,6 +13,7 @@ public class MsgUpdateTask extends RSTask {
 
     @Override
     public void run() {
+        broker.getClient().request("ONLINE", new JSONObject().put("token", broker.getToken()));
         try {
             for (String queue : broker.getQueues().keySet()) {
                 JSONObject response = (JSONObject) broker.getClient().request("UPDATE", new JSONObject()

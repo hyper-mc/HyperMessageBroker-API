@@ -1,4 +1,5 @@
 [![](https://jitpack.io/v/hyper-mc/HyperMessageBroker-API.svg)](https://jitpack.io/#hyper-mc/HyperMessageBroker-API)
+[![](https://img.shields.io/badge/HyperPowered-Use%20the%20official%20repository-yellow?color=%23279BF8&cacheSeconds=3600)](https://maven.hyperpowered.net/#/snapshots/net/hyper/mc/msgbroker/HyperMessageBroker-API)
 # HyperMessageBroker API for Java
 PT-BR: Esta é a API Java do HyperMessageBroker, um servidor de mensageria de alta performance para servidores de Minecraft.<br>
 EN: This is the Java API for HyperMessageBroker, a high-performance messaging server for Minecraft servers.
