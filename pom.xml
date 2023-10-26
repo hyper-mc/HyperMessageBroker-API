@@ -6,7 +6,7 @@
 
     <groupId>net.hyper.mc.msgbroker</groupId>
     <artifactId>HyperMessageBroker-API</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -29,9 +29,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.SrBalbucio</groupId>
-            <artifactId>procbridge-java</artifactId>
-            <version>f35beb479f</version>
+            <groupId>co.gongzh.procbridge</groupId>
+            <artifactId>procbridge</artifactId>
+            <version>1.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
