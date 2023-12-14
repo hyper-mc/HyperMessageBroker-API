@@ -19,6 +19,11 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>hyperpowered-maven-privatesnapshot</id>
+            <name>HyperPowered Maven Repository</name>
+            <url>https://maven.hyperpowered.net/privatesnapshot</url>
+        </repository>
     </repositories>
 
     <dependencies>

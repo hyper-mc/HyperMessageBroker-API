@@ -1,7 +1,7 @@
 package net.hyper.mc.msgbrokerapi;
 
 import balbucio.responsivescheduler.ResponsiveScheduler;
-import co.gongzh.procbridge.Client;
+import co.gongzh.procbridge.client.Client;
 import net.hyper.mc.msgbrokerapi.model.MessageReceivedConsumer;
 import net.hyper.mc.msgbrokerapi.task.MsgUpdateTask;
 import net.hyper.mc.msgbrokerapi.task.listener.HMBListener;

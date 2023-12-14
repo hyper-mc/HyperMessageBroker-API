@@ -32,4 +32,9 @@ public class HMBListener implements Listener {
     public void scheduledTask(ScheduledTaskEvent scheduledTaskEvent) {
 
     }
+
+    @Override
+    public void shutdown(ShutdownEvent shutdownEvent) {
+
+    }
 }
