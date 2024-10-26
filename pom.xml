@@ -6,7 +6,7 @@
 
     <groupId>net.hyper.mc.msgbroker</groupId>
     <artifactId>HyperMessageBroker-API</artifactId>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.2.2-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -16,23 +16,13 @@
 
     <repositories>
         <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-            <id>hyperpowered-maven-privatesnapshot</id>
+            <id>hyperpowered-maven-releases</id>
             <name>HyperPowered Maven Repository</name>
-            <url>https://maven.hyperpowered.net/privatesnapshot</url>
+            <url>https://maven.hyperpowered.net/releases</url>
         </repository>
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>com.github.SrBalbucio</groupId>
-            <artifactId>ResponsiveScheduler</artifactId>
-            <version>v1.0.5</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>co.gongzh.procbridge</groupId>
             <artifactId>procbridge</artifactId>
@@ -44,6 +34,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>balbucio.throwable</groupId>
+            <artifactId>throwable</artifactId>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
 
