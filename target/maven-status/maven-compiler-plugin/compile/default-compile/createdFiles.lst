@@ -1,4 +1,0 @@
-net\hyper\mc\msgbrokerapi\model\Message.class
-net\hyper\mc\msgbrokerapi\model\MessageReceivedConsumer.class
-net\hyper\mc\msgbrokerapi\task\MsgUpdateTask.class
-net\hyper\mc\msgbrokerapi\HyperMessageBroker.class
